@@ -38,7 +38,7 @@ Stair::Stair( cocos2d::Layer *layer, Stair *s)
 	if (stair->getPositionY() > visibleSize.height){
 		stair->setOpacity(0);		
 	}else if (stair->getPositionY() > visibleSize.height/2){
-		stair->setOpacity(255*(visibleSize.height - stair->getPositionY())/(visibleSize.height/2 + stair->getContentSize().height/2));		
+		stair->setOpacity(255*(visibleSize.height - stair->getPositionY() + 10)/(visibleSize.height/2 + stair->getContentSize().height/2));		
 	}else{
 		stair->setOpacity(255);
 	}

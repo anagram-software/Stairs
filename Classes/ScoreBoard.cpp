@@ -8,7 +8,7 @@ ScoreBoard::ScoreBoard( cocos2d::Layer *layer )
 	visibleSize = Director::getInstance()->getVisibleSize();
 	origin = Director::getInstance()->getVisibleOrigin();
 
-	scoreText = Label::createWithTTF("0", "Roboto.ttf", 48);
+	scoreText = Label::createWithTTF("0", "FredokaOne.ttf", 42);
 	scoreText->setAlignment( TextHAlignment::CENTER, TextVAlignment::CENTER);
 	scoreText->setColor( Color3B(255,255,255));
 	scoreText->setAnchorPoint( Vec2(0.5f, 0.5f) );

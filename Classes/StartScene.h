@@ -1,9 +1,9 @@
 #ifndef __START_SCENE_H__
 #define __START_SCENE_H__
 
-#include "BaseScene.h"
+#include "cocos2d.h"
 
-class StartScene : public BaseScene
+class StartScene : public cocos2d::Layer
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -17,6 +17,8 @@ public:
 
 private:
 	void gotoScene( cocos2d::Ref *sender );
+	void fbShare( cocos2d::Ref *sender );
+
 };
 
 #endif // __START_SCENE_H__

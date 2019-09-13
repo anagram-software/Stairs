@@ -10,7 +10,7 @@ Ball::Ball( cocos2d::Layer *layer )
 
 	ball = Sprite::create( "ball.png" );
 	ball->setAnchorPoint(Vec2(0.5,0));
-	ball->setPosition( Vec2( visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y - 40.0f));
+	ball->setPosition( Vec2( visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y - 36.0f));
 
 	layer->addChild( ball, 10 );
 }

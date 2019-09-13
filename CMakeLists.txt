@@ -52,6 +52,7 @@ list(APPEND GAME_SOURCE
      Classes/Ball.cpp
      Classes/Stair.cpp
      Classes/BaseScene.cpp
+     Classes/SplashScene.cpp
      Classes/StartScene.cpp
      Classes/GameScene.cpp
      Classes/EndScene.cpp
@@ -62,6 +63,7 @@ list(APPEND GAME_HEADER
      Classes/Ball.h
      Classes/Stair.h
      Classes/BaseScene.h
+     Classes/SplashScene.h
      Classes/StartScene.h
      Classes/GameScene.h
      Classes/EndScene.h

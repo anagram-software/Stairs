@@ -1,6 +1,9 @@
 #include "GameScene.h"
 #include "EndScene.h"
 #include "ui/CocosGUI.h"
+#include "SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 
 USING_NS_CC;
 
@@ -8,7 +11,7 @@ Scene* GameScene::createScene()
 {
     // 'scene' is an autorelease object
 	auto scene = Scene::create();
-    
+
     // 'layer' is an autorelease object
     auto layer = GameScene::create();
 
@@ -79,7 +82,6 @@ bool GameScene::init()
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
 
 	this->schedule(schedule_selector(GameScene::tickTock));
-    
     return true;
 }
 
@@ -94,18 +96,39 @@ bool GameScene::onTouchBegan (cocos2d::Touch * touch, cocos2d::Event * event)
 
 	ball->Jump();
 
+	//init audio
+	auto audio = SimpleAudioEngine::getInstance();
+
+	// play jump music
+	audio->playEffect("jump.ogg");
+
+	UserDefault *def = UserDefault::getInstance();
+
+	auto sounds = def->getBoolForKey( "SOUNDS",  true );
+
+	if ( sounds )
+	{
+		audio->setBackgroundMusicVolume(1.0f);
+	  	audio->setEffectsVolume(1.0f);
+	}else{
+	  	audio->setBackgroundMusicVolume(0.0f);
+	   	audio->setEffectsVolume(0.0f);
+	}
+
+	def->flush();
+
 	Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
-	
+
 	if ( touch->getLocationInView().x < visibleSize.width/2 + origin.x ) {
 		checkFail(0);
 		for(int e = 0; e <= 12; e++) {
-			stair[e]->jumpLeft();			
+			stair[e]->jumpLeft();
 		}
 	}else if ( touch->getLocationInView().x >= visibleSize.width/2 + origin.x ) {
 		checkFail(1);
 		for(int e = 0; e <= 12; e++) {
-			stair[e]->jumpRight();			
+			stair[e]->jumpRight();
 		}
 	}
 
@@ -123,7 +146,7 @@ void GameScene::checkFail (int dir)
 	if(stair[floorNum]->getNextDir() == dir)
 	{
 		score++;
-		currentTime += 0.2f; 
+		currentTime += 0.2f;
 		if (currentTime > fullTime)
 		{
 			currentTime = fullTime;
@@ -157,4 +180,3 @@ void GameScene::gotoScene( cocos2d::Ref *sender, int failType)
 
 	Director::getInstance()->replaceScene( TransitionFade::create( 0.3f, scene ));
 }
-
