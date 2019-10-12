@@ -26,7 +26,7 @@ void AppDelegate::initGLContextAttrs()
 
 bool AppDelegate::applicationDidFinishLaunching() {
     // Default should be 1
-    int reverse_scale = 3;
+    int reverse_scale = 0;
 
     // initialize director
     auto director = Director::getInstance();
@@ -36,7 +36,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
         director->setOpenGLView(glview);
     }
 
-    director->getOpenGLView()->setDesignResolutionSize(540, 960, ResolutionPolicy::SHOW_ALL);
+    director->getOpenGLView()->setDesignResolutionSize(540, 1024, ResolutionPolicy::SHOW_ALL);
 
     // turn on display FPS
     //director->setDisplayStats(true);
